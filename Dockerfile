@@ -13,7 +13,7 @@ COPY ./src/ ./src/
 COPY ./data/ ./data/
 
 # Ensure the model directory exists and is copied
-RUN mkdir -p /model
+RUN mkdir -p -v /model
 
 # Run the training script during the build
 RUN python src/train.py
