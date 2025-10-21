@@ -16,11 +16,11 @@ COPY ./data/ ./data/
 RUN mkdir -p -v ./model
 
 # Run the training script during the build
-#RUN python src/train.py
+RUN python src/train.py
 
 # Expose the port for the API
-#EXPOSE 8091
+EXPOSE 8091
 
 
 # Run the FastAPI app
-#CMD ["uvicorn", "src.app:app", "--host", "0.0.0.0", "--port", "8091"]
+CMD ["uvicorn", "src.app:app", "--host", "0.0.0.0", "--port", "8091"]
