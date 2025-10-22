@@ -34,7 +34,7 @@ def predict(input_data: InputData):
         print(f"Start")
         X_new = pd.DataFrame(input_data.data)
         # Get predictions
-        prediction = model.predict(X_new)
+        prediction =model.predict(X_new)
 
         # Return predictions as a standard Python list
         return {"prediction": prediction.tolist()}

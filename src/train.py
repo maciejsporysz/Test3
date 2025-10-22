@@ -19,9 +19,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder
 
-
 def load_data():
-    data_path = "data/train.csv"
+    data_path = "../data/train.csv"
     df = pd.read_csv(data_path,low_memory=False)
     print("Data loaded successfully!")
     return df
@@ -53,7 +52,6 @@ def preprocess_data(df):
     print("Data preprocessed successfully!")
     return X, y
 
-
 def encode_data(X):
     # Identify categorical and numerical features
     categorical_features = [
@@ -84,13 +82,11 @@ def encode_data(X):
 
     return preprocessor
 
-
 def split_data(X, y):
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.2, random_state=42
     )
     return X_train, X_test, y_train, y_test
-
 
 def train_model(X_train, y_train, preprocessor):
     # Create a pipeline with preprocessing and model
@@ -106,7 +102,6 @@ def train_model(X_train, y_train, preprocessor):
 
     # Return the trained model
     return clf
-
 
 def evaluate_model(clf, X_test, y_test):
     # Predict and evaluate
@@ -138,13 +133,12 @@ def evaluate_model(clf, X_test, y_test):
     plt.ylabel("True label")
     plt.xlabel("Predicted label")
     plt.tight_layout()
-    cm_path = os.path.join("model", "confusion_matrix.png")
+    cm_path = os.path.join("../model", "confusion_matrix.png")
     plt.savefig(cm_path)
     print(f"Confusion matrix saved to {cm_path}")
 
-
 def save_model(clf):
-    model_dir = "model"
+    model_dir = "../model"
     os.makedirs(model_dir, exist_ok=True)
     model_path = os.path.join(model_dir, "model.pkl")
 
@@ -152,7 +146,6 @@ def save_model(clf):
     with open(model_path, "wb") as f:
         pickle.dump(clf, f)
     print(f"Model saved to {model_path}")
-
 
 def main():
     # Execute steps
